@@ -54,20 +54,20 @@ export const userRegister = async (req, res) => {
         const savedUser = await user.save();
 
         // Send registration email
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
-        });
+        // const transporter = nodemailer.createTransport({
+        //     service: 'gmail',
+        //     auth: {
+        //         user: process.env.EMAIL_USER,
+        //         pass: process.env.EMAIL_PASS
+        //     }
+        // });
 
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: savedUser.email,
-            subject: 'Registration Successful',
-            text: `Welcome ${savedUser.firstName}, your registration was successful!`
-        });
+        // await transporter.sendMail({
+        //     from: process.env.EMAIL_USER,
+        //     to: savedUser.email,
+        //     subject: 'Registration Successful',
+        //     text: `Welcome ${savedUser.firstName}, your registration was successful!`
+        // });
 
         const token = await createJwtToken({ id: savedUser._id });
         return ResponseHelper.success(res, HttpStatus.CREATED, language, 'User_Register_Success', null, token);
