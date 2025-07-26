@@ -77,7 +77,7 @@ EMAIL_PASS=your_16char_app_password
 
 
 
-git clone https://github.com/your-repo/user-management-api.git
+git clone https://github.com/NEERAJMEHRA1/user-management-fe-be
 cd backend
 npm install
 node index.js
